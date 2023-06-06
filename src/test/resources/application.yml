@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: INFO
+spring:
+  application:
+    name: votacao-api
+  datasource:
+    url: jdbc:h2:mem:test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.sql
+  profiles:
+    active: test
+app:
+  sessao:
+    duracao: 3
+  job:
+    cron: "-"
+  rabbitmq:
+    queue:
+      pautaEncerrada: pauta-encerrada

@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "b1e7801b-65a4-40b8-ab80-42d3679c03e6",
+		"name": "votacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "55725",
+		"_collection_link": "https://interstellar-equinox-111726.postman.co/workspace/java~80cf9328-b7c0-4212-9dae-3c37497629ec/collection/55725-b1e7801b-65a4-40b8-ab80-42d3679c03e6?action=share&creator=55725&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "associados",
+			"item": [
+				{
+					"name": "Incluir Associado A",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let idPauta = pm.response.json().id;",
+									"pm.collectionVariables.set(\"idPauta\", idPauta);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Associado A\",\n    \"cpf\": \"75199550799\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/associados",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"associados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incluir Associado B",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let idPauta = pm.response.json().id;",
+									"pm.collectionVariables.set(\"idPauta\", idPauta);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Associado B\",\n    \"cpf\": \"23346816281\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/associados",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"associados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incluir Associado C",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let idPauta = pm.response.json().id;",
+									"pm.collectionVariables.set(\"idPauta\", idPauta);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Associado C\",\n    \"cpf\": \"19237745656\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/associados",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"associados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incluir nova Pauta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let idPauta = pm.response.json().id;",
+							"pm.collectionVariables.set(\"idPauta\", idPauta);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Pauta de Teste\",\n    \"descricao\": \"Descrição de Teste\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/pautas",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"pautas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir nova Sessão",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"duracao\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/pautas/{{idPauta}}/sessao",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"pautas",
+						"{{idPauta}}",
+						"sessao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Votar na Pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idAssociado\": 1,\n    \"voto\": \"SIM\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/pautas/{{idPauta}}/voto",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"pautas",
+						"{{idPauta}}",
+						"voto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar resultado da Pauta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/pautas/{{idPauta}}/resultado",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"pautas",
+						"{{idPauta}}",
+						"resultado"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "idPauta",
+			"value": ""
+		}
+	]
+}

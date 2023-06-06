@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8181:8080"
+    volumes:
+      - adminer_data:/sessions
+
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: votacao
+      MYSQL_USER: votacao
+      MYSQL_PASSWORD: votacao
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/mnesia
+
+volumes:
+  mysql_data:
+  adminer_data:
+  rabbitmq_data:

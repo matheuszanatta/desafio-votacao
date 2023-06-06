@@ -1,0 +1,33 @@
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+spring:
+  application:
+    name: votacao-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/votacao
+    username: votacao
+    password: votacao
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.sql
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+app:
+  sessao:
+    duracao: 60
+  job:
+    cron: "0/60 * * * * ?"
+  message:
+    pauta:
+      exchange: pauta.exchange
+      encerradaQueue: pauta.encerrada.queue
