@@ -1,5 +1,18 @@
 # Desafio Votação
 
+## Sumário
+
+- [Descrição](#descrição)
+- [Funcionalidades](#funcionalidades)
+- [Pré-requisitos](#pré-requisitos)
+- [Execução do Projeto](#execução-do-projeto)
+- [Acesso as funcionalidades](#acesso-as-funcionalidades)
+- [Documentação da API](#documentação-da-api)
+- [Testes](#testes)
+- [Screenshots da Aplicação](#screenshots-da-aplicação)
+- [Autores](#autores)
+- [Contato](#contato)
+
 ## Descrição
 
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em pautas, por votação.
