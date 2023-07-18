@@ -23,6 +23,8 @@ Com esse princípio, foi criada esta solução que gerencia as pautas.
 
 Mais detalhes podem ser encontrados documento do desafio: [PDF](resources/desafio.pdf)
 
+Obs: A Tarefa Bônus 1 não foi implementada, as instruções para realizar a tarefa estão com problemas.
+
 ## Funcionalidades
 
 - Criação de pautas para votação.
