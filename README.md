@@ -11,6 +11,7 @@
 - [Sonar Cloud](#sonar-cloud)
 - [Diagrama ER](#diagrama-er)
 - [Testes](#testes)
+- [Teste de Carga](#teste-de-carga)
 - [Setup Adminer](#setup-adminer)
 - [Autores](#autores)
 - [Contato](#contato)
@@ -90,6 +91,16 @@ url `http://localhost:8080/swagger-ui.html`.
 #### Resultado dos testes (unitários e integração)
 
 ![resultado-testes.png](resources/screenshots/resultado-testes.png)
+
+## Teste de Carga
+
+- Para executar os testes de carga é necessário, através de uma ide, executar a classe Engine.java que está no diretório
+  `src/test/java/gatling/` e digitar no console `test` para executar todos os testes de carga. Os resultados serão
+  exibidos no console.
+
+#### Resultado do teste de carga (Gatling)
+
+![resultado-teste-carga.png](resources/screenshots/resultado-teste-carga.png)
 
 ## Setup Adminer
 
