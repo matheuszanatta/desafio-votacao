@@ -22,13 +22,12 @@
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em pautas, por votação.
 Com esse princípio, foi criada esta solução que gerencia as pautas.
 
-Mais detalhes podem ser encontrados documento do desafio: [PDF](resources/desafio.pdf)
+Mais detalhes podem ser encontrados no [documento do desafio](resources/desafio.pdf) e no documento
+de [decisões de projeto](resources/decisoes-projeto.md).
 
 ### Diagrama de Solução
 
 ![diagrama-solucao.drawio.png](resources/screenshots/diagrama-solucao.drawio.png)
-
-Obs: A Tarefa Bônus 1 não foi implementada, as instruções para realizar a tarefa estão com problemas.
 
 ## Funcionalidades
 
