@@ -124,3 +124,16 @@ url `http://localhost:8080/swagger-ui.html`.
 Para entrar em contato com a equipe do projeto, envie um e-mail
 para `matheus.zanatta.nh@gmail.com` ou abra uma issue no
 repositório do GitHub.
+
+## Observações
+
+### Atuais conhecimentos Cloud (AWS)
+
+- CloudWatch
+- EC2
+- IAM
+- Lambda
+- S3
+- Serverless
+- SNS
+- SQS
