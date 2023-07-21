@@ -8,6 +8,7 @@
 - [Execução do Projeto](#execução-do-projeto)
 - [Acesso as funcionalidades](#acesso-as-funcionalidades)
 - [Documentação da API](#documentação-da-api)
+- [Decisões de Projeto](resources/decisoes-projeto.md)
 - [Sonar Cloud](#sonar-cloud)
 - [Diagrama ER](#diagrama-er)
 - [Testes](#testes)
@@ -22,6 +23,10 @@ No cooperativismo, cada associado possui um voto e as decisões são tomadas em 
 Com esse princípio, foi criada esta solução que gerencia as pautas.
 
 Mais detalhes podem ser encontrados documento do desafio: [PDF](resources/desafio.pdf)
+
+### Diagrama de Solução
+
+![diagrama-solucao.drawio.png](resources/screenshots/diagrama-solucao.drawio.png)
 
 Obs: A Tarefa Bônus 1 não foi implementada, as instruções para realizar a tarefa estão com problemas.
 
@@ -51,7 +56,7 @@ Abaixo o exemplo dos comandos citados, que devem ser executes no terminal:
 
 ```ssh
 git clone git@github.com:matheuszanatta/desafio-votacao.git
-cd teste
+cd desafio-votacao
 docker-compose up -d
 ./mvnw spring-boot:run
 ```
