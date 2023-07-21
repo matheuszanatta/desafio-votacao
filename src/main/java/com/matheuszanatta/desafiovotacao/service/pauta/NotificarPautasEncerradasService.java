@@ -34,6 +34,8 @@ public class NotificarPautasEncerradasService {
 
             sessao.setEnviada(true);
             sessaoRepository.save(sessao);
+
+            log.info("Pauta {} notificada com sucesso", sessao.getPauta().getId());
         });
     }
 

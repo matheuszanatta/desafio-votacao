@@ -5,7 +5,9 @@ import com.matheuszanatta.desafiovotacao.controller.dto.response.AssociadoRespon
 import com.matheuszanatta.desafiovotacao.domain.Associado;
 import com.matheuszanatta.desafiovotacao.exception.RegraNegocioException;
 import com.matheuszanatta.desafiovotacao.repository.AssociadoRepository;
+import com.matheuszanatta.desafiovotacao.util.BuscarMensagemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +16,11 @@ import static com.matheuszanatta.desafiovotacao.mapper.AssociadoMapper.toRespons
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class IncluirAssociadoService {
 
     private final AssociadoRepository repository;
+    private final BuscarMensagemService buscarMensagemService;
 
     @Transactional
     public AssociadoResponse incluir(AssociadoRequest request) {
@@ -27,13 +31,15 @@ public class IncluirAssociadoService {
 
         repository.save(associado);
 
+        log.info("Associado {} incluído com sucesso", associado.getId());
+
         return toResponse(associado);
     }
 
     private void validarAssociadoExistente(Associado associado) {
         var existeAssociado = repository.existsByCpf(associado.getCpf());
         if (existeAssociado) {
-            throw new RegraNegocioException("Já existe um associado com este CPF");
+            throw new RegraNegocioException(buscarMensagemService.porChave("erro.associado.cpf.duplicado"));
         }
     }
 }

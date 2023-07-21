@@ -8,6 +8,7 @@ import com.matheuszanatta.desafiovotacao.repository.VotoRepository;
 import com.matheuszanatta.desafiovotacao.repository.projection.VotoResultado;
 import com.matheuszanatta.desafiovotacao.service.sessao.BuscarSessaoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import static java.lang.Integer.compare;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class BuscarResultadoPautaService {
 
     private final BuscarPautaService buscarPautaService;
@@ -38,6 +40,8 @@ public class BuscarResultadoPautaService {
         var total = votoSim + votoNao;
 
         var resultado = definirResultado(sessao, total, votoSim, votoNao);
+
+        log.info("Resultado da pauta {}: {}", id, resultado);
 
         return buildResponse(id, votoSim, votoNao, total, resultado);
     }

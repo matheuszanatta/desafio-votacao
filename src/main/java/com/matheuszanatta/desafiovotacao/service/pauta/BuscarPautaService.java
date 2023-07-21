@@ -3,6 +3,7 @@ package com.matheuszanatta.desafiovotacao.service.pauta;
 import com.matheuszanatta.desafiovotacao.domain.Pauta;
 import com.matheuszanatta.desafiovotacao.exception.RecursoNaoEncontradoException;
 import com.matheuszanatta.desafiovotacao.repository.PautaRepository;
+import com.matheuszanatta.desafiovotacao.util.BuscarMensagemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class BuscarPautaService {
 
     private final PautaRepository repository;
+    private final BuscarMensagemService buscarMensagemService;
 
     public Pauta porId(Long id) {
         return repository.findById(id)
@@ -25,6 +27,6 @@ public class BuscarPautaService {
     }
 
     private RecursoNaoEncontradoException buildErroNaoEncontrado() {
-        return new RecursoNaoEncontradoException("Pauta não encontrada");
+        return new RecursoNaoEncontradoException(buscarMensagemService.porChave("erro.pauta.nao.encontrada"));
     }
 }

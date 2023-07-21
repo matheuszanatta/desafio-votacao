@@ -7,7 +7,9 @@ import com.matheuszanatta.desafiovotacao.domain.Sessao;
 import com.matheuszanatta.desafiovotacao.exception.RegraNegocioException;
 import com.matheuszanatta.desafiovotacao.repository.SessaoRepository;
 import com.matheuszanatta.desafiovotacao.service.pauta.BuscarPautaService;
+import com.matheuszanatta.desafiovotacao.util.BuscarMensagemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +21,12 @@ import static java.util.Objects.nonNull;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class IncluirSessaoService {
 
     private final SessaoRepository sessaoRepository;
     private final BuscarPautaService buscarPautaService;
+    private final BuscarMensagemService buscarMensagemService;
 
     @Value("${app.sessao.duracao}")
     private Integer duracaoPadrao;
@@ -40,13 +44,15 @@ public class IncluirSessaoService {
 
         sessaoRepository.save(sessao);
 
+        log.info("Sessão {} incluída com sucesso", sessao.getId());
+
         return toResponse(sessao);
     }
 
     private void validarSessaoExistente(Long idPauta) {
         var existeSessao = sessaoRepository.existsByPautaId(idPauta);
         if (existeSessao) {
-            throw new RegraNegocioException("Já existe uma sessão para esta pauta");
+            throw new RegraNegocioException(buscarMensagemService.porChave("erro.sessao.duplicada"));
         }
     }
 

@@ -5,6 +5,8 @@ import com.matheuszanatta.desafiovotacao.exception.RegraNegocioException;
 import com.matheuszanatta.desafiovotacao.exception.handler.dto.ApiError;
 import com.matheuszanatta.desafiovotacao.exception.handler.dto.ApiValidationError;
 import com.matheuszanatta.desafiovotacao.exception.handler.dto.ValidationError;
+import com.matheuszanatta.desafiovotacao.util.BuscarMensagemService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -20,42 +22,45 @@ import static java.time.LocalDateTime.now;
 import static org.springframework.http.HttpStatus.*;
 
 @ControllerAdvice
+@RequiredArgsConstructor
 @Slf4j
 public class RestExceptionHandler {
+
+    private final BuscarMensagemService buscarMensagemService;
 
     @ExceptionHandler(RecursoNaoEncontradoException.class)
     @ResponseStatus(NOT_FOUND)
     public ResponseEntity<Object> handleRecursoNaoEncontradoException(RecursoNaoEncontradoException exception) {
-        log.error(exception.getMessage());
+        log.error(exception.getMessage(), exception);
         return buildApiError(NOT_FOUND, exception);
     }
 
     @ExceptionHandler(RegraNegocioException.class)
     @ResponseStatus(UNPROCESSABLE_ENTITY)
     public ResponseEntity<Object> handleForbiddenActionException(RegraNegocioException exception) {
-        log.error(exception.getMessage());
+        log.error(exception.getMessage(), exception);
         return buildApiError(UNPROCESSABLE_ENTITY, exception);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseStatus(BAD_REQUEST)
     public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
-        log.error(exception.getMessage());
+        log.error(exception.getMessage(), exception);
         return buildApiError(BAD_REQUEST, exception);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(BAD_REQUEST)
     public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
-        log.error(exception.getMessage());
+        log.error(exception.getMessage(), exception);
         return buildApiValidationError(BAD_REQUEST, exception);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(BAD_REQUEST)
     public ResponseEntity<Object> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception) {
-        log.error(exception.getMessage());
-        return buildApiError(BAD_REQUEST, "Erro de parse no corpo da requisição");
+        log.error(exception.getMessage(), exception);
+        return buildApiError(BAD_REQUEST, buscarMensagemService.porChave("erro.requisicao.invalida"));
     }
 
     private ResponseEntity<Object> buildApiError(HttpStatus status, Exception exception) {
@@ -82,7 +87,7 @@ public class RestExceptionHandler {
         return buildResponseEntity(
                 ApiValidationError.builder()
                         .status(status.value())
-                        .message("Erro de validação")
+                        .message(buscarMensagemService.porChave("erro.validacao"))
                         .timestamp(now())
                         .errors(validationErrors)
                         .build());

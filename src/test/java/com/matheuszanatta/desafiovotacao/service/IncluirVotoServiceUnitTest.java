@@ -10,6 +10,7 @@ import com.matheuszanatta.desafiovotacao.service.associado.BuscarAssociadoServic
 import com.matheuszanatta.desafiovotacao.service.pauta.BuscarPautaService;
 import com.matheuszanatta.desafiovotacao.service.sessao.BuscarSessaoService;
 import com.matheuszanatta.desafiovotacao.service.voto.IncluirVotoService;
+import com.matheuszanatta.desafiovotacao.util.BuscarMensagemService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,6 +42,9 @@ class IncluirVotoServiceUnitTest extends BaseUnitTest {
 
     @Mock
     private VotoRepository votoRepository;
+
+    @Mock
+    private BuscarMensagemService buscarMensagemService;
 
     @Captor
     private ArgumentCaptor<Voto> votoCaptor;

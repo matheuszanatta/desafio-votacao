@@ -290,7 +290,7 @@ class PautaControllerIntegrationTest {
 
         var pautaId = 1L;
         var statusEsperado = BAD_REQUEST.value();
-        var mensagemEsperada = "Erro de parse no corpo da requisição";
+        var mensagemEsperada = "Requisição inválida";
 
         var votoRequestEnumInvalido = "{\"idAssociado\":1,\"voto\":\"INVALIDO\"}";
 
