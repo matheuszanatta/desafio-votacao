@@ -21,3 +21,7 @@
 - O consumo de apis externas (REST) deve ser feito utilizando o Spring Cloud OpenFeign que apesar de um pouco mais
   burocrático deixa mais claro os endpoints existentes assim como seus requests e responses. Além disso, simplifica a
   utilização de outras funcionalidades de sistemas distribuídos como circuit breaker, cache, retry, etc.
+
+- O mysql por padrão cria índices para `PK`, `FK` e `UNIQUE` sendo assim não foi necessário criar novos índices
+  específicos. Entretanto, sempre que forem feitas alterações no projeto é necessário revisar e se necessário criar
+  novos.
