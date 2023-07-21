@@ -2,7 +2,7 @@
 
 - Rabbitmq foi utilizado como componente de mensageria para notificar o encerramento da sessão de votação, o mesmo foi
   escolhido pois não se entende que haja a necessidade de manter histórico destas mensagens. Além disso, ele é de fácil
-  configuração e o time possuí maior experiência de uso.
+  configuração e o time possui maior experiência de uso.
 
 - Identificar via log (info) a saída de sucesso da operação principal do endpoint e em caso de falha centralizar no
   handler o erro e o stack trace. Utilização através da anotação `@Slf4j` e faz uso da implementação Logback (default do
@@ -18,6 +18,6 @@
   pode facilitar o isolamento do problema encontrado. É entendido que isto não é uma verdade absoluta e deve seguir as
   orientações de cada projeto.
 
-- O Consumo de apis externas (REST) deve ser feito utilizando o Spring Cloud OpenFeign que apesar de um pouco mais
+- O consumo de apis externas (REST) deve ser feito utilizando o Spring Cloud OpenFeign que apesar de um pouco mais
   burocrático deixa mais claro os endpoints existentes assim como seus requests e responses. Além disso, simplifica a
   utilização de outras funcionalidades de sistemas distribuídos como circuit breaker, cache, retry, etc.
